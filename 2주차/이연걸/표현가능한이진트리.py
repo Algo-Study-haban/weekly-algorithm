@@ -1,3 +1,5 @@
+# 분할 정복
+
 import sys
 sys.setrecursionlimit(10**7)
 

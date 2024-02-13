@@ -1,29 +1,29 @@
-def solution(cap, n, deliveries, pickups):
-    answer = 0        
+# 완전 탐색
+
+from itertools import product
+
+def solution(users, emoticons):
+    answer = [0, 0]
+    n = len(emoticons)
     
-    for i in range(n-1, -1, -1):
-        if deliveries[i] != 0: break
-        deliveries.pop()
-    for i in range(n-1, -1, -1):
-        if pickups[i] != 0: break
-        pickups.pop()
-    
-    while deliveries or pickups:
-        answer += max(len(deliveries), len(pickups)) * 2
-        
-        d_cap, p_cap = cap, cap
-        while deliveries:
-            if deliveries[-1] <= d_cap:
-                d_cap -= deliveries.pop()
-            else:
-                deliveries[-1] -= d_cap
-                break
-        while pickups:
-            if pickups[-1] <= p_cap:
-                p_cap -= pickups.pop()
-            else:
-                pickups[-1] -= p_cap
-                break
-        
+    def bf(discount):
+        plus, price = 0, 0
+        for rate, limit in users:
+            cur_price = 0
+            for i in range(n):
+                if rate <= discount[i]:
+                    cur_price += (emoticons[i] * (1 - discount[i] / 100))
+                if limit <= cur_price:
+                    plus += 1
+                    cur_price = 0
+                    break
+            price += cur_price
+        return [plus, price]
+            
+    for discount in product([10, 20, 30, 40], repeat=n):
+        plus, price = bf(discount)
+        if plus > answer[0]:
+            answer = [plus, price]
+        elif plus == answer[0] and price > answer[1]:
+            answer = [plus, price]
     return answer
-        
