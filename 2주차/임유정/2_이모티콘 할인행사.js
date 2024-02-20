@@ -16,6 +16,8 @@
 // 즉 최소한으로 보유한 돈을 넘게 만드는 점을 찾아야함 => 이모티콘 가격이 높은건 상대적으로 크게 할인
 // 기대할인율이 낮은순으로 정렬
 
+// 완전탐색, 중복순열
+
 function solution(users, emoticons) {
   var answer = [];
   let discounts = [10, 20, 30, 40];
