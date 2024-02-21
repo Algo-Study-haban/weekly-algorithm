@@ -1,3 +1,4 @@
+# 년 월 일 -> 일
 def solution(today, terms, privacies):
     answer = []
     deadline = {}

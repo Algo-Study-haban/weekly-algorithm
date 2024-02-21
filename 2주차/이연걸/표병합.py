@@ -1,3 +1,5 @@
+# 구현
+
 def solution(commands):
     answer = []
     merged = [[(i, j) for j in range(50)] for i in range(50)]
