@@ -22,11 +22,11 @@ for (let i = 0; i < N; i++) {
   }
 }
 
-// top to bottom
+// 제일 짧은 식부터 left값과 right값의 연산 중 최대값을 기록해 전체식의 최대값을 구한다
 dp(0, N - 1);
 console.log(maxdp[0][N - 1]);
 
-// i에서 j까지 [최소, 최대] 리턴
+// 인덱스 i에서 j까지 계산한 값의 [최소값, 최대값] 리턴
 function dp(i, j) {
   if (i === j) return [parseInt(equation[i]), parseInt(equation[i])];
 
