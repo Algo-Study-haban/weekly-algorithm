@@ -21,7 +21,6 @@ def cal(i, j):
             dist[ni][nj] = dist[i][j] + 1
             dq.append((ni, nj))
 
-
 for i in range(n):
     for j in range(m):
         if board[i][j] == 0: safe_dist.append(cal(i, j))

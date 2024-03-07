@@ -18,7 +18,7 @@ for i in range(h):
     for j in range(w):
         print(a[i][j], end=' ')
     print()
-        
+
 1  2  3  4
 5  6  7  8
 9  10 11 12
@@ -38,8 +38,8 @@ for i in range(h):
 13 14 20 22 7  8
 0  0  9  10 11 12
 0  0  13 14 15 16
-
 '''
+
 h, w, x, y = map(int, input().split())
 a, b = [[0] * w for _ in range(h)], []
 

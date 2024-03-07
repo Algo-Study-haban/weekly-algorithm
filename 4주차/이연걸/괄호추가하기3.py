@@ -1,6 +1,15 @@
 n = int(input())
 formula = input()
-answer = -1e9
+
+nums, ops = [], []
+for i, f in enumerate(formula):
+    if i % 2 == 0: nums.append(int(f))
+    else: ops.append(f)
+
+
+
+
+
 def cal(n1, n2, op):
     if op == '*':
         return n1 * n2
@@ -9,14 +18,15 @@ def cal(n1, n2, op):
     if op == '-':
         return n1 + n2
     
-def dfs(cur, result):
-    if len(cur) == n:
+def dfs(index, result):
+    if index == n - 1:
         answer = max(answer, result)
         return
     
-    if len(cur) < n:
+    if index + 2 < n:
         dfs()
+    if index + 4 < n:
+        dfs(inde)
 
-
-dfs("", int(formula[0]))
+dfs(0, int(formula[0]))
 print(answer)
