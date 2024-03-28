@@ -16,7 +16,7 @@ for s in string:
 
     if stack and stack[-1] == exp[-1] and stack_check(stack):
         for _ in range(exp_l):
-            stack.pop()  
+            stack.pop()
 
 if len(stack) == 0: print("FRULA")
 else:
