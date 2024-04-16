@@ -1,6 +1,6 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/72412
 
-// target점수 이상의 점수 갯수 반환
+// target점수 이상의 점수 갯수 반환 (이분탐색)
 function lowerBound(target, scoreArr) {
   let min = 0;
   let max = scoreArr.length - 1;
