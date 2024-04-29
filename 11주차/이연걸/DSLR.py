@@ -1,35 +1,37 @@
+from collections import deque
+
 T = int(input())
 
-def D(n):
-    return (n * 2) % 10000
-
-def S(n):
-    if n == 0: return 9999
-    return n - 1
-
-def L(n):
-    length = 10 ** (len(str(n)) - 1)
-    sub = n // length 
-    n -=  sub * length
-    return (n * 10) + sub
-
-def R(n):
-    new_n, sub = n // 10, n % 10
-    length = 10 ** len(str(new_n))
-    return new_n + (sub * length)
-
-def backtracking(n, B):
-    
-    pass
-
 for _ in range(T):
-    ans = ""
     A, B = map(int, input().split())
-    lst_a, lst_b = sorted(list(map(int, str(A)))), sorted(list(map(int, str(B))))
-    while lst_a != lst_b:
-        A = D(A)
-        ans += "D"
-        lst_a = sorted(list(map(int, str(A))))
+    
+    Q = deque()
+    Q.append((A, ""))
+    vis = [False] * 10000
 
-    backtracking(A, B)
-    print(ans)
+    while Q:
+        a, path = Q.popleft()
+        vis[a] = True
+        if a == B:
+            print(path)
+            break
+
+        new_a = (2 * a) % 10000
+        if not vis[new_a]:
+            Q.append((new_a, path + "D"))
+            vis[new_a] = True
+
+        new_a = (a - 1) % 10000
+        if not vis[new_a]:
+            Q.append((new_a, path + "S"))
+            vis[new_a] = True
+
+        new_a = (10 * a + (a // 1000)) % 10000
+        if not vis[new_a]:
+            Q.append((new_a, path + "L"))
+            vis[new_a] = True
+        
+        new_a = (a // 10 + (a % 10) * 1000) % 10000
+        if not vis[new_a]:
+            Q.append((new_a, path + "R"))
+            vis[new_a] = True
