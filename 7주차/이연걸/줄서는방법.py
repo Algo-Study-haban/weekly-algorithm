@@ -20,5 +20,5 @@ def solution(n, k):
         answer.append(nums.pop(a))
         k = k % math.factorial(n - 1)
         n -= 1
-        
+
     return answer
